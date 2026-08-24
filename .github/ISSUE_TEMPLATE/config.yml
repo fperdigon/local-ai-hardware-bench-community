@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions, ideas, methodology arguments
+    url: https://github.com/fperdigon/local-ai-hardware-bench-community/discussions
+    about: Anything that is not a specific submission or correction. Disagreements about how confidence is computed are welcome here.
+  - name: How to measure tok/s so someone else can use it
+    url: https://localaiarena.com/guides/how-to-measure-honestly/
+    about: Read this before running a new benchmark — it is what makes a measurement acceptable here.
+  - name: How a number gets onto the site
+    url: https://localaiarena.com/methodology/
+    about: The evidence rules, the confidence tiers, and what this dataset cannot tell you.

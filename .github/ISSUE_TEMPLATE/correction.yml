@@ -1,0 +1,55 @@
+name: Report a wrong number
+description: A published figure is wrong, stale, or attributed to the wrong person
+title: "[correction] "
+labels: ["correction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Corrections are the most valuable thing you can file here. This dataset
+        has already had nine records removed after re-verification showed they
+        were fabricated or misattributed, and one source site excluded outright.
+        Finding another is a service, not a nuisance.
+
+  - type: input
+    id: where
+    attributes:
+      label: Where on the site
+      description: >
+        Paste the URL. A row in the benchmarks explorer has its own link — the
+        record id in the address bar after `#` — which is the most precise
+        thing to give.
+      placeholder: https://localaiarena.com/benchmarks/#rtx-4090--llama-3-1-8b--q4_k_m--llamacpp--c512--b1--2025-06
+    validations:
+      required: true
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What is wrong
+      options:
+        - The number does not match its source
+        - The source does not say what the record claims
+        - Attributed to the wrong author
+        - The source is gone or was retracted
+        - A hardware spec or price has changed
+        - The measurement conditions are recorded wrongly (quant, context, batch, offload)
+        - Something else
+    validations:
+      required: true
+
+  - type: textarea
+    id: detail
+    attributes:
+      label: What it should say
+      description: >
+        What the source actually reports, and where in it. Quoting the line is
+        ideal — records are checked against raw source text, not summaries.
+    validations:
+      required: true
+
+  - type: input
+    id: evidence
+    attributes:
+      label: Supporting URL
+      description: If a different source shows the correct value, link it here.

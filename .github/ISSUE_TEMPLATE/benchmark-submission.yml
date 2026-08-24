@@ -1,0 +1,176 @@
+name: Submit a benchmark
+description: Point at a published measurement that should be in the dataset
+title: "[benchmark] "
+labels: ["submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Every field marked required is required because the dataset's validator
+        rejects a record without it — not to make this tedious. A tok/s figure
+        without its quantisation and context length is not comparable to
+        anything else on the site, so it cannot be published.
+
+        If the measurement is your own, publish it somewhere public first and
+        link that: the site cites sources, and it cannot cite a number that
+        exists nowhere but this issue.
+
+  - type: input
+    id: url
+    attributes:
+      label: Source URL
+      description: The public page where this measurement was published.
+      placeholder: https://forum.level1techs.com/t/...
+    validations:
+      required: true
+
+  - type: input
+    id: author
+    attributes:
+      label: Author
+      description: >
+        Who measured it — the username or real name shown on that page.
+        Source independence is keyed on the author, so one person posting the
+        same run to three sites counts once, not three times.
+    validations:
+      required: true
+
+  - type: input
+    id: date
+    attributes:
+      label: Date measured
+      description: YYYY-MM-DD. The date of the measurement, or of the post if that is all the page gives.
+      placeholder: "2026-08-24"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind of source
+      options:
+        - forum
+        - repo-issue
+        - community-table
+        - press
+        - vendor
+        - own-test
+    validations:
+      required: true
+
+  - type: input
+    id: hardware
+    attributes:
+      label: Hardware
+      description: Be specific. Memory size and variant matter — "M4 Pro 24GB (Mac mini)", not "M4 Pro".
+    validations:
+      required: true
+
+  - type: input
+    id: model
+    attributes:
+      label: Model
+      placeholder: Llama 3.1 8B
+    validations:
+      required: true
+
+  - type: input
+    id: quant
+    attributes:
+      label: Quantisation
+      description: The label the backend uses, exactly as written — Q4_K_M, MLX-q4, FP8, AWQ_4bit.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: backend
+    attributes:
+      label: Backend
+      options:
+        - llama.cpp
+        - ik_llama.cpp
+        - ollama
+        - vllm
+        - sglang
+        - mlx
+        - exllamav2
+        - tensorrt-llm
+        - other (say which in Notes)
+    validations:
+      required: true
+
+  - type: input
+    id: backend_version
+    attributes:
+      label: Backend version
+      description: Only if the source states one. Leave blank rather than guessing — this is never inferred.
+
+  - type: input
+    id: context_len
+    attributes:
+      label: Context length (tokens)
+      description: >
+        If the source used llama-bench with no context flag, its runs are a
+        fixed 512-token prompt; say 512 and mention llama-bench in Notes.
+      placeholder: "4096"
+    validations:
+      required: true
+
+  - type: input
+    id: batch
+    attributes:
+      label: Batch size
+      description: 1 unless the source says otherwise. Batch-1 latency and batched throughput are different numbers.
+      placeholder: "1"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: offload
+    attributes:
+      label: Offload
+      description: Whether the whole model sat in fast memory. Spilling to system RAM changes the result by an order of magnitude.
+      options:
+        - full (entire model in GPU/unified memory)
+        - partial (some layers in system RAM)
+        - cpu-only
+    validations:
+      required: true
+
+  - type: textarea
+    id: metrics
+    attributes:
+      label: The numbers
+      description: >
+        At least one. Give only what the source actually reports — a figure
+        that is not in the source cannot be published.
+      value: |
+        decode_tps (token generation):
+        prefill_tps (prompt processing):
+        ttft_ms:
+        power_w:
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: >
+        Anything that qualifies the number: a power profile on a laptop, a
+        thermal limit, an unusual flag, which of several figures on the page
+        this is. What the source did NOT control is as useful as what it did.
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Before you submit
+      options:
+        - label: The source URL is public and reachable without a login.
+          required: true
+        - label: The numbers above appear in that source — I have not calculated or estimated them.
+          required: true
+        - label: >
+            If this is my own measurement, I agree it may be published on the
+            site under CC BY-NC 4.0, credited to me.
+          required: false
