@@ -1,0 +1,50 @@
+name: Something on the site is broken
+description: A page, chart, filter or link misbehaves — not a wrong number
+title: "[site] "
+labels: ["site"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is for the site itself: a layout that breaks, a control that does
+        nothing, a link that 404s, a chart that renders wrong.
+
+        **If a published figure is wrong, that is a different thing** — use
+        [Report a wrong number](https://github.com/fperdigon/local-ai-hardware-bench-community/issues/new?template=correction.yml)
+        instead, because it is checked against the source rather than debugged.
+
+        A browser bug that only a visitor can see is genuinely useful to
+        receive: much of this site is client-side, and a machine and browser
+        combination the maintainer does not own is invisible from here.
+
+  - type: input
+    id: page
+    attributes:
+      label: Page
+      description: The full URL, including any query string — the advisor and the explorer put their whole state in it, which is often the difference between reproducing this and not.
+      placeholder: https://localaiarena.com/advisor/?budget=2000&currency=CAD&useCase=chat
+    validations:
+      required: true
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What happens, and what you expected instead
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and device
+      description: Name and version, and whether it is a phone, if the problem looks visual.
+      placeholder: Safari 18 on iPhone 15
+
+  - type: textarea
+    id: console
+    attributes:
+      label: Console errors
+      description: >
+        Optional, and worth more than it looks for anything that fails to load
+        or render. The browser's developer tools, Console tab, red lines only.
+      render: text

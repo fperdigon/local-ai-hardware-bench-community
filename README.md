@@ -15,7 +15,15 @@ live elsewhere and are not open source — see *Why this repo is separate* below
 |---|---|
 | Point at a benchmark that should be in the dataset | **[Submit a benchmark](../../issues/new?template=benchmark-submission.yml)** |
 | Say a published number is wrong or stale | **[Report a wrong number](../../issues/new?template=correction.yml)** |
-| Anything else — questions, ideas, methodology arguments | **[Discussions](../../discussions)** |
+| Report a page, chart, filter or link that misbehaves | **[Something on the site is broken](../../issues/new?template=site-issue.yml)** |
+| Suggest something, argue with the methodology, ask a question | **[Discussions](../../discussions)** |
+
+**Suggestions go in Discussions, not Issues**, and that is not a brush-off. An
+issue is something with a definite done state — this number is wrong, this
+page is broken. A wishlist filed as issues is a list that never closes, which
+on a project this size ends up reading as neglect rather than as a roadmap.
+Ideas get argued about properly in Discussions and become issues if and when
+they turn into work.
 
 ## What makes a submission usable
 
