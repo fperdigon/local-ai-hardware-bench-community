@@ -1,0 +1,36 @@
+# This repo is the PUBLIC tracker for a PRIVATE project. It holds a README and
+# issue forms: no site code, no dataset, ever.
+#
+# That separation is the only reason this repo can be public at all, and it is
+# one careless `git add -A` away from being broken -- run in the wrong
+# directory, or after copying a file across "just to look at it". So the site's
+# own shapes are refused here by default rather than left to vigilance.
+#
+# If you ever genuinely need one of these paths, unignore it deliberately and
+# ask why the tracker needs code before you do.
+
+# Site source
+/assets/
+/layouts/
+/content/
+/scripts/
+/static/
+/data/
+/schemas/
+/bin/
+/public/
+/resources/
+hugo.toml
+package.json
+package-lock.json
+
+# Anything that looks like the site or the dataset
+*.html
+*.css
+*.js
+*.yaml
+*.toml
+
+# Local noise
+node_modules/
+.DS_Store
